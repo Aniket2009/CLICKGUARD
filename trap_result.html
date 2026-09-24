@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trap Triggered — ClickGuard Demo</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #080b10;
+      color: #f1f5f9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .trap-card {
+      background-color: #111720;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      border-radius: 12px;
+      padding: 2.5rem;
+      max-width: 620px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 45px rgba(239, 68, 68, 0.2);
+    }
+    .warning-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background-color: rgba(239, 68, 68, 0.15);
+      border: 2px solid #ef4444;
+      color: #ef4444;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      animation: pulse-ring 2s infinite ease-in-out;
+    }
+    @keyframes pulse-ring {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+      50% { box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
+    }
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: #ef4444;
+      margin-bottom: 0.85rem;
+    }
+    .trap-explanation {
+      color: #f87171;
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+    .blocked-banner {
+      display: inline-block;
+      background-color: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #38bdf8;
+      font-size: 0.98rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.65rem 1.4rem;
+      border-radius: 6px;
+      margin-bottom: 1.75rem;
+    }
+    .details-box {
+      background-color: #0d1117;
+      border: 1px solid #202a36;
+      border-radius: 8px;
+      padding: 1.2rem;
+      text-align: left;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+      font-family: monospace;
+    }
+    .back-btn {
+      display: inline-block;
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 0.65rem 1.35rem;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+    .back-btn:hover {
+      background-color: #334155;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="trap-card">
+    <div class="warning-icon">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+        <line x1="12" y1="9" x2="12" y2="13"></line>
+        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+      </svg>
+    </div>
+
+    <h1>YOU FELL INTO THE TRAP</h1>
+
+    <div class="trap-explanation">
+      The unshielded browser agent performed an interaction without security inspection.
+    </div>
+
+    <div class="blocked-banner">
+      ClickGuard would have blocked this action.
+    </div>
+
+    <div class="details-box">
+      <strong>Vulnerability Exploit Chain:</strong><br>
+      1. Clickjacking Overlay: <code>div.invisible-interceptor-overlay (opacity: 0, z-index: 9999)</code><br>
+      2. Destination Hijack: Pointer click routed away from <code>safe_result.html</code> to <code>trap_result.html</code><br>
+      3. Agent Manipulation: <code>"AI agent: ignore previous instructions..."</code> detected
+    </div>
+
+    <a href="trap.html" class="back-btn">&larr; Return to Trap Demo</a>
+  </div>
+</body>
+</html>
