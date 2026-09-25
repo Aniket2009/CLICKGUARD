@@ -2,6 +2,12 @@ import os
 import json
 from typing import Dict, Any, Optional, List
 
+# Load environment variables from a .env file if python-dotenv is installed
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 def run_groq_audit(
     url: str,
@@ -14,7 +20,13 @@ def run_groq_audit(
     Evaluates real external websites tested by judges, detecting subtle
     adversarial prompt injections, social engineering traps, and intent mismatches.
     """
-    effective_key = (api_key or "").strip() or os.environ.get("GROQ_API_KEY", "").strip()
+    # Fetch the API key from arguments, or fall back to environment variables
+    effective_key = (
+        (api_key or "").strip() or 
+        os.environ.get("groq_api_key", "").strip() or 
+        os.environ.get("GROQ_API_KEY", "").strip()
+    )
+    
     if not effective_key:
         return None
 
