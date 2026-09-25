@@ -2,7 +2,12 @@ from typing import Dict, List, Any
 from urllib.parse import urlparse
 from pathlib import Path
 import os
-from playwright.async_api import async_playwright
+try:
+    from playwright.async_api import async_playwright
+    PLAYWRIGHT_AVAILABLE = True
+except ImportError:
+    async_playwright = None
+    PLAYWRIGHT_AVAILABLE = False
 
 
 async def inspect_page(url: str) -> Dict[str, Any]:
@@ -11,6 +16,9 @@ async def inspect_page(url: str) -> Dict[str, Any]:
     monitors network requests & redirects, extracts DOM elements and interactive surfaces,
     and returns comprehensive telemetry data.
     """
+    if not PLAYWRIGHT_AVAILABLE:
+        raise RuntimeError("Playwright is not installed in the current Python environment.")
+
     # Normalize local relative or absolute file paths to file:// URI
     normalized_url = url
     if not (url.startswith("http://") or url.startswith("https://") or url.startswith("file://")):
@@ -111,9 +119,9 @@ async def inspect_page(url: str) -> Dict[str, Any]:
                 };
             }""")
 
-            # Collect interactive elements (buttons, links, forms, inputs)
+            # Collect interactive elements (buttons, links, forms, inputs) and check for overlapping interceptors
             interactive_elements = await page.evaluate("""() => {
-                const targets = document.querySelectorAll('button, a, input, form, [role="button"], [onclick]');
+                const targets = document.querySelectorAll('button, a, input, form, [role="button"], [onclick], .btn-download, .invisible-interceptor-overlay');
                 const collected = [];
 
                 targets.forEach((el, idx) => {
@@ -129,11 +137,54 @@ async def inspect_page(url: str) -> Dict[str, Any]:
                     );
 
                     // Check if element is full-screen or transparent overlay
+                    const opacityVal = parseFloat(style.opacity);
                     const isOverlay = (
                         (style.position === 'fixed' || style.position === 'absolute') &&
-                        (rect.width >= window.innerWidth * 0.8 && rect.height >= window.innerHeight * 0.8) &&
-                        (parseFloat(style.opacity) < 0.1 || style.backgroundColor.includes('rgba(0, 0, 0, 0)'))
+                        (
+                            (rect.width >= window.innerWidth * 0.7 && rect.height >= window.innerHeight * 0.7) ||
+                            (parseInt(style.zIndex, 10) > 1000 && opacityVal < 0.2) ||
+                            el.classList.contains('invisible-interceptor-overlay')
+                        ) &&
+                        (opacityVal < 0.2 || style.backgroundColor.includes('rgba(0, 0, 0, 0)') || style.backgroundColor === 'transparent')
                     );
+
+                    // Check whether another element intercepts clicks at the element's center point
+                    let interceptor = null;
+                    if (rect.width > 0 && rect.height > 0) {
+                        const cx = rect.x + rect.width / 2;
+                        const cy = rect.y + rect.height / 2;
+                        if (cx >= 0 && cx <= window.innerWidth && cy >= 0 && cy <= window.innerHeight) {
+                            const topEl = document.elementFromPoint(cx, cy);
+                            if (topEl && topEl !== el && !el.contains(topEl) && !topEl.contains(el)) {
+                                const topStyle = window.getComputedStyle(topEl);
+                                const topRect = topEl.getBoundingClientRect();
+                                const topOpacity = parseFloat(topStyle.opacity);
+                                const topZ = topStyle.zIndex || 'auto';
+                                const topPE = topStyle.pointerEvents || 'auto';
+
+                                if (topPE !== 'none') {
+                                    interceptor = {
+                                        type: "overlay_interception",
+                                        severity: "HIGH",
+                                        target: (el.innerText || el.value || el.id || 'target').trim().slice(0, 60),
+                                        interceptor: topEl.tagName,
+                                        interceptor_id: topEl.id || null,
+                                        interceptor_class: topEl.className || null,
+                                        interceptor_href: topEl.getAttribute('href') || null,
+                                        opacity: isNaN(topOpacity) ? 1.0 : topOpacity,
+                                        z_index: topZ,
+                                        pointer_events: topPE,
+                                        bounding_box: {
+                                            x: Math.round(topRect.x),
+                                            y: Math.round(topRect.y),
+                                            width: Math.round(topRect.width),
+                                            height: Math.round(topRect.height)
+                                        }
+                                    };
+                                }
+                            }
+                        }
+                    }
 
                     collected.push({
                         tag_name: el.tagName.toLowerCase(),
@@ -153,17 +204,29 @@ async def inspect_page(url: str) -> Dict[str, Any]:
                         z_index: style.zIndex || 'auto',
                         opacity: style.opacity || '1',
                         pointer_events: style.pointerEvents || 'auto',
-                        onclick_attr: el.getAttribute('onclick') || null
+                        position: style.position || 'static',
+                        onclick_attr: el.getAttribute('onclick') || null,
+                        interceptor_detected: interceptor
                     });
                 });
 
                 return collected;
             }""")
 
+            # Capture real page screenshot for the visual X-ray viewport
+            screenshot_data = None
+            try:
+                import base64
+                screenshot_bytes = await page.screenshot(type="jpeg", quality=65)
+                screenshot_data = f"data:image/jpeg;base64,{base64.b64encode(screenshot_bytes).decode('utf-8')}"
+            except Exception as ss_err:
+                print(f"[Screenshot Notice]: {ss_err}")
+
             return {
                 "initial_url": url,
                 "final_url": final_url,
                 "title": title,
+                "screenshot": screenshot_data,
                 "dom_element_count": page_stats.get("dom_element_count", 0),
                 "script_count": page_stats.get("script_count", 0),
                 "script_sources": page_stats.get("script_sources", []),

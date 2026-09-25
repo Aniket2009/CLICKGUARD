@@ -26,13 +26,13 @@ except ImportError:
     pass
 
 try:
-    from backend.models import AnalyzeRequest, AnalyzeResponse
-    from backend.analyzer import analyze_url
+    from backend.models import AnalyzeRequest, AnalyzeResponse, AuthorizeActionRequest, AuthorizeActionResponse
+    from backend.analyzer import analyze_url, authorize_action
 except ImportError:
-    from models import AnalyzeRequest, AnalyzeResponse
-    from analyzer import analyze_url
+    from models import AnalyzeRequest, AnalyzeResponse, AuthorizeActionRequest, AuthorizeActionResponse
+    from analyzer import analyze_url, authorize_action
 
-app = FastAPI(title="ClickGuard API")
+app = FastAPI(title="ClickGuard API", description="Security middleware & action firewall for autonomous web agents")
 
 # Enable CORS for local and hosted frontend development
 app.add_middleware(
@@ -48,9 +48,33 @@ app.add_middleware(
 def read_root():
     return {
         "status": "online",
-        "service": "ClickGuard",
+        "service": "ClickGuard Action Firewall",
+        "endpoints": ["/analyze", "/authorize_action"],
         "groq_ai_configured": bool(os.environ.get("GROQ_API_KEY"))
     }
+
+
+@app.post("/authorize_action", response_model=AuthorizeActionResponse)
+async def api_authorize_action(request: AuthorizeActionRequest):
+    """
+    Action Firewall: Receives sensitive browser interaction intent from an agent,
+    inspects target geometry, stacking contexts, and destinations,
+    and returns structured authorization (ALLOW / CAUTION / BLOCK).
+    """
+    try:
+        result = await authorize_action(
+            action=request.action,
+            target=request.target,
+            task=request.task,
+            url=request.url,
+            groq_api_key=request.groq_api_key
+        )
+        return result
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Authorization evaluation failed: {str(exc)}"
+        ) from exc
 
 
 @app.post("/analyze", response_model=AnalyzeResponse)
@@ -69,9 +93,9 @@ async def analyze(request: AnalyzeRequest):
         ) from exc
 
 
+
 if __name__ == "__main__":
     import uvicorn
     if sys.platform == "win32":
         asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
     uvicorn.run(app, host="127.0.0.1", port=8000, loop="asyncio")
-
