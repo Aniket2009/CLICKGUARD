@@ -10,52 +10,52 @@
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <!-- Google Fonts: Spectral (report serif) + IBM Plex Sans (UI) + IBM Plex Mono (data) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Spectral:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
 
     <!-- ====================================================================
-         1. TOP NAVIGATION BAR (Luxe Top Bar Contract)
+         1. MASTHEAD
          ==================================================================== -->
     <header id="app-header">
       <div class="header-container">
-        <!-- Zone 1: Luxury Brand Mark -->
+        <!-- Zone 1: Case mark -->
         <div class="header-brand-group" id="brand-home-btn">
           <div class="brand-crest" aria-hidden="true">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
               <polyline points="9 12 11 14 15 10"></polyline>
             </svg>
           </div>
           <div class="brand-name-wrap">
             <span class="brand-title">ClickGuard</span>
-            <span class="brand-subtitle">Pre-interaction firewall for autonomous browser agents</span>
+            <span class="brand-subtitle">A pre-click inspection log for autonomous browser agents</span>
           </div>
         </div>
 
-        <!-- Zone 2: Navigation Links -->
+        <!-- Zone 2: Section tabs -->
         <nav class="header-nav" aria-label="Primary Navigation">
           <button type="button" class="nav-item active" data-scroll="#verdict-section">Verdict</button>
-          <button type="button" class="nav-item" data-scroll="#intent-reality-section">Intent vs Reality</button>
-          <button type="button" class="nav-item" data-scroll="#wireframe-section">X-Ray Viewport</button>
-          <button type="button" class="nav-item" data-scroll="#live-stream-section">Live Telemetry</button>
-          <button type="button" class="nav-item" data-scroll="#forensic-section">Forensic Ledger</button>
+          <button type="button" class="nav-item" data-scroll="#intent-reality-section">Intent vs. reality</button>
+          <button type="button" class="nav-item" data-scroll="#wireframe-section">Viewport</button>
+          <button type="button" class="nav-item" data-scroll="#live-stream-section">Wire feed</button>
+          <button type="button" class="nav-item" data-scroll="#forensic-section">Case file</button>
         </nav>
 
-        <!-- Zone 3: Engine State & Actions -->
+        <!-- Zone 3: Engine state & settings -->
         <div class="header-controls">
           <div class="engine-badge" id="engine-status-pill" title="Click to configure backend">
             <span class="pulse-indicator safe" id="status-dot"></span>
-            <span class="engine-name font-mono" id="backend-status-label">Sandbox Engine</span>
+            <span class="engine-name font-mono" id="backend-status-label">Sandbox engine</span>
           </div>
 
           <button type="button" class="icon-action-btn" id="settings-button" title="Configure Backend &amp; Groq AI API" aria-label="Settings">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="3"></circle>
               <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
             </svg>
@@ -68,15 +68,14 @@
       <div class="workspace-container">
 
         <!-- ================================================================
-             2. EXECUTIVE TARGET SELECTOR & COMMAND BAR
+             2. INTAKE — TARGET & TASK
              ================================================================ -->
         <section class="command-hub-card">
-          <!-- Unified Command Line Input -->
           <form id="audit-form" class="command-bar-form" onsubmit="return false;">
             <div class="command-bar-row">
               <!-- URL Field -->
               <div class="command-input-group url-group">
-                <span class="protocol-pill font-mono">URI</span>
+                <span class="protocol-pill font-mono">URL</span>
                 <input
                   type="text"
                   id="website-url-input"
@@ -92,13 +91,13 @@
 
               <!-- Task Field -->
               <div class="command-input-group task-group">
-                <span class="protocol-pill goal-pill font-mono">GOAL</span>
+                <span class="protocol-pill goal-pill font-mono">Task</span>
                 <input
                   type="text"
                   id="agent-task-input"
                   class="command-input"
                   value=""
-                  placeholder="Describe intended agent task..."
+                  placeholder="Describe the agent's intended task..."
                   autocomplete="off"
                   required
                 />
@@ -106,10 +105,10 @@
 
               <!-- Submit Action -->
               <button type="button" id="analyze-button" class="btn-command-audit">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
                   <polygon points="5 3 19 12 5 21 5 3"></polygon>
                 </svg>
-                <span>Audit Target Surface</span>
+                <span>Run inspection</span>
                 <span class="hotkey-badge font-mono">&crarr;</span>
               </button>
             </div>
@@ -117,13 +116,13 @@
         </section>
 
         <!-- ================================================================
-             3. INSPECTION PROGRESS PIPELINE (Animated while scanning)
+             3. INSPECTION LOG (animated while scanning)
              ================================================================ -->
         <section id="analysis-progress" class="progress-tracker-card" style="display: none;">
           <div class="progress-bar-head">
             <div class="progress-status-line">
               <span class="radar-spinner" aria-hidden="true"></span>
-              <span class="progress-title-text">Inspecting Target Interaction Surface...</span>
+              <span class="progress-title-text">Inspecting the target's interaction surface</span>
             </div>
             <span class="progress-percentage tabular-nums font-mono" id="progress-percent">0%</span>
           </div>
@@ -131,35 +130,35 @@
             <div class="stage-box active" id="stage-browser">
               <span class="stage-num font-mono">01</span>
               <div class="stage-meta">
-                <span class="stage-title">Sandbox Session</span>
-                <span class="stage-desc" id="stage-browser-desc">Initializing...</span>
+                <span class="stage-title">Sandbox session</span>
+                <span class="stage-desc" id="stage-browser-desc">Starting…</span>
               </div>
             </div>
             <div class="stage-box" id="stage-dom">
               <span class="stage-num font-mono">02</span>
               <div class="stage-meta">
-                <span class="stage-title">DOM &amp; Z-Index Tree</span>
+                <span class="stage-title">DOM &amp; stacking order</span>
                 <span class="stage-desc" id="stage-dom-desc">Waiting</span>
               </div>
             </div>
             <div class="stage-box" id="stage-javascript">
               <span class="stage-num font-mono">03</span>
               <div class="stage-meta">
-                <span class="stage-title">Event Hooks &amp; Traps</span>
+                <span class="stage-title">Event hooks &amp; traps</span>
                 <span class="stage-desc" id="stage-javascript-desc">Waiting</span>
               </div>
             </div>
             <div class="stage-box" id="stage-network">
               <span class="stage-num font-mono">04</span>
               <div class="stage-meta">
-                <span class="stage-title">Network Route Graph</span>
+                <span class="stage-title">Network route graph</span>
                 <span class="stage-desc" id="stage-network-desc">Waiting</span>
               </div>
             </div>
             <div class="stage-box" id="stage-risk">
               <span class="stage-num font-mono">05</span>
               <div class="stage-meta">
-                <span class="stage-title">Policy Decision</span>
+                <span class="stage-title">Policy decision</span>
                 <span class="stage-desc" id="stage-risk-desc">Waiting</span>
               </div>
             </div>
@@ -167,11 +166,11 @@
         </section>
 
         <!-- ================================================================
-             4. EXECUTIVE SECURITY VERDICT & INTELLIGENCE BRIEFING
+             4. VERDICT
              ================================================================ -->
         <section id="verdict-section" class="verdict-master-card" style="display: none;">
           <div class="verdict-card-body">
-            <!-- Left Column: Precision Radial SVG Meter -->
+            <!-- Left: radial risk meter -->
             <div class="verdict-gauge-column">
               <div class="circular-meter-wrap">
                 <svg class="circular-meter-svg" viewBox="0 0 120 120">
@@ -183,10 +182,10 @@
                   <span class="meter-scale font-mono">/100</span>
                 </div>
               </div>
-              <span class="meter-caption font-mono">INTERACTION RISK</span>
+              <span class="meter-caption font-mono">Interaction risk</span>
             </div>
 
-            <!-- Center Column: Decision & Remediation Brief -->
+            <!-- Center: verdict stamp & remediation -->
             <div class="verdict-content-column">
               <div class="verdict-tag-strip">
                 <span class="decision-flag" id="verdict-decision-badge">
@@ -200,39 +199,38 @@
               <h2 class="verdict-title" id="verdict-title">&mdash;</h2>
               <p class="verdict-explanation" id="verdict-summary"></p>
 
-              <!-- Operational Control Buttons -->
               <div class="verdict-cta-row">
                 <button type="button" class="btn-enforce-policy" id="block-action-button">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
                   </svg>
-                  <span>Enforce Block Policy</span>
+                  <span>Enforce block policy</span>
                 </button>
 
                 <button type="button" class="btn-auxiliary" id="btn-toggle-xray">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                     <circle cx="12" cy="12" r="3"></circle>
                   </svg>
-                  <span>Inspect X-Ray</span>
+                  <span>Inspect viewport</span>
                 </button>
 
                 <button type="button" class="btn-auxiliary" id="btn-export-audit">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
                   </svg>
-                  <span>Export Dossier</span>
+                  <span>Export case file</span>
                 </button>
               </div>
             </div>
 
-            <!-- Right Column: Transparent Interaction Risk Signals -->
+            <!-- Right: risk ledger -->
             <div class="verdict-factors-column">
               <div class="factors-header-line">
-                <span class="factors-header-label font-mono">INTERACTION RISK SIGNALS</span>
+                <span class="factors-header-label font-mono">Risk ledger</span>
                 <span class="factors-header-badge font-mono" id="breakdown-total-badge">&mdash;/100</span>
               </div>
 
@@ -240,7 +238,7 @@
                 <div class="sig-left">
                   <span class="sig-delta font-mono">+40</span>
                   <div>
-                    <span class="sig-name">Invisible Click Interceptor</span>
+                    <span class="sig-name">Invisible click interceptor</span>
                     <span class="sig-evidence font-mono" id="sig-overlay-evidence">&mdash;</span>
                   </div>
                 </div>
@@ -251,7 +249,7 @@
                 <div class="sig-left">
                   <span class="sig-delta font-mono">+30</span>
                   <div>
-                    <span class="sig-name">Destination Mismatch</span>
+                    <span class="sig-name">Destination mismatch</span>
                     <span class="sig-evidence font-mono" id="sig-mismatch-evidence">&mdash;</span>
                   </div>
                 </div>
@@ -262,7 +260,7 @@
                 <div class="sig-left">
                   <span class="sig-delta font-mono">+25</span>
                   <div>
-                    <span class="sig-name">Agent-Targeted Instruction</span>
+                    <span class="sig-name">Agent-targeted instruction</span>
                     <span class="sig-evidence font-mono" id="sig-injection-evidence">&mdash;</span>
                   </div>
                 </div>
@@ -273,7 +271,7 @@
                 <div class="sig-left">
                   <span class="sig-delta font-mono">+20</span>
                   <div>
-                    <span class="sig-name">Suspicious / Multi-hop Redirect</span>
+                    <span class="sig-name">Suspicious redirect chain</span>
                     <span class="sig-evidence font-mono" id="sig-redirect-evidence">&mdash;</span>
                   </div>
                 </div>
@@ -284,7 +282,7 @@
                 <div class="sig-left">
                   <span class="sig-delta font-mono">+10</span>
                   <div>
-                    <span class="sig-name">Suspicious Navigation Routine</span>
+                    <span class="sig-name">Suspicious navigation routine</span>
                     <span class="sig-evidence font-mono" id="sig-js-evidence">&mdash;</span>
                   </div>
                 </div>
@@ -293,38 +291,38 @@
             </div>
           </div>
 
-          <!-- Bottom Telemetry Ribbon -->
+          <!-- Ribbon -->
           <div class="verdict-ribbon">
             <div class="ribbon-item">
-              <span class="ribbon-k font-mono">TARGET:</span>
+              <span class="ribbon-k font-mono">Target</span>
               <span class="ribbon-v font-mono" id="ribbon-url">&mdash;</span>
             </div>
             <div class="ribbon-item">
-              <span class="ribbon-k font-mono">TIMESTAMP:</span>
+              <span class="ribbon-k font-mono">Logged</span>
               <span class="ribbon-v font-mono tabular-nums" id="ribbon-timestamp">&mdash;</span>
             </div>
             <div class="ribbon-item">
-              <span class="ribbon-k font-mono">ENVIRONMENT:</span>
+              <span class="ribbon-k font-mono">Environment</span>
               <span class="ribbon-v font-mono" id="ribbon-engine">&mdash;</span>
             </div>
             <div class="ribbon-item">
-              <span class="ribbon-k font-mono">POLICY RULE:</span>
+              <span class="ribbon-k font-mono">Policy rule</span>
               <span class="ribbon-v font-mono" id="ribbon-policy">&mdash;</span>
             </div>
           </div>
         </section>
 
         <!-- ================================================================
-             5. AGENT INTENT VS BROWSER REALITY (Core Visual Feature)
+             5. AGENT INTENT VS BROWSER REALITY
              ================================================================ -->
         <section class="section-card intent-vs-reality-card" id="intent-reality-section" style="display: none;">
           <div class="section-header-bar">
             <div>
               <div class="title-with-pill">
-                <h3 class="section-title">Agent Intent vs Browser Reality</h3>
+                <h3 class="section-title">Agent intent vs. browser reality</h3>
                 <span class="pill-badge font-mono" id="ivr-status-pill">&mdash;</span>
               </div>
-              <p class="section-subtitle">Real-time discrepancy audit contrasting what the autonomous agent believes it is clicking versus what the browser DOM will actually trigger</p>
+              <p class="section-subtitle">What the agent believes it is clicking, set against what the DOM will actually trigger</p>
             </div>
             <div class="ivr-actions">
               <span class="ivr-verdict-flag font-mono" id="ivr-verdict-flag">&mdash;</span>
@@ -332,72 +330,71 @@
           </div>
 
           <div class="ivr-comparison-grid">
-            <!-- Left Side: Agent Intent -->
+            <!-- Left: Agent Intent -->
             <div class="ivr-column ivr-intent-column">
               <div class="ivr-col-head">
                 <span class="ivr-col-icon"></span>
                 <div>
-                  <h4 class="ivr-col-title">Agent Intent</h4>
-                  <span class="ivr-col-sub font-mono">AUTONOMOUS AFFORDANCE</span>
+                  <h4 class="ivr-col-title">Agent intent</h4>
+                  <span class="ivr-col-sub font-mono">Autonomous affordance</span>
                 </div>
               </div>
               <div class="ivr-data-group">
                 <div class="ivr-row">
-                  <span class="ivr-label font-mono">PROPOSED ACTION:</span>
+                  <span class="ivr-label font-mono">Proposed action</span>
                   <span class="ivr-val font-mono" id="ivr-agent-action">&mdash;</span>
                 </div>
                 <div class="ivr-row">
-                  <span class="ivr-label font-mono">TASK / GOAL:</span>
+                  <span class="ivr-label font-mono">Task</span>
                   <span class="ivr-val" id="ivr-agent-task">&mdash;</span>
                 </div>
                 <div class="ivr-row">
-                  <span class="ivr-label font-mono">EXPECTED TARGET:</span>
+                  <span class="ivr-label font-mono">Expected target</span>
                   <span class="ivr-val font-mono" id="ivr-expected-dest">&mdash;</span>
                 </div>
                 <div class="ivr-row">
-                  <span class="ivr-label font-mono">SEMANTIC CONTROL:</span>
+                  <span class="ivr-label font-mono">Semantic control</span>
                   <span class="ivr-val font-mono" id="ivr-visible-tag">&mdash;</span>
                 </div>
               </div>
             </div>
 
-            <!-- Center Divider -->
+            <!-- Divider -->
             <div class="ivr-vs-divider">
-              <span class="vs-badge font-mono">VS</span>
+              <span class="vs-badge font-mono">vs</span>
               <div class="vs-line"></div>
             </div>
 
-            <!-- Right Side: Browser Reality -->
+            <!-- Right: Browser Reality -->
             <div class="ivr-column ivr-reality-column">
               <div class="ivr-col-head">
                 <span class="ivr-col-icon"></span>
                 <div>
-                  <h4 class="ivr-col-title">Browser Reality</h4>
-                  <span class="ivr-col-sub font-mono">COMPUTED DOM &amp; STACKING CONTEXT</span>
+                  <h4 class="ivr-col-title">Browser reality</h4>
+                  <span class="ivr-col-sub font-mono">Computed DOM &amp; stacking context</span>
                 </div>
               </div>
               <div class="ivr-data-group">
                 <div class="ivr-row">
-                  <span class="ivr-label font-mono">PHYSICAL TARGET:</span>
+                  <span class="ivr-label font-mono">Physical target</span>
                   <span class="ivr-val font-mono" id="ivr-actual-target">&mdash;</span>
                 </div>
                 <div class="ivr-row">
-                  <span class="ivr-label font-mono">STACKING PROPERTIES:</span>
+                  <span class="ivr-label font-mono">Stacking properties</span>
                   <span class="ivr-val font-mono" id="ivr-interceptor-props">&mdash;</span>
                 </div>
                 <div class="ivr-row">
-                  <span class="ivr-label font-mono">ACTUAL DESTINATION:</span>
+                  <span class="ivr-label font-mono">Actual destination</span>
                   <span class="ivr-val font-mono" id="ivr-actual-dest">&mdash;</span>
                 </div>
                 <div class="ivr-row">
-                  <span class="ivr-label font-mono">FIREWALL EFFECT:</span>
+                  <span class="ivr-label font-mono">Firewall effect</span>
                   <span class="ivr-val font-mono" id="ivr-assessment">&mdash;</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Bottom Status Banner -->
           <div class="ivr-banner-wrap">
             <div class="ivr-banner" id="ivr-banner">
               <div class="ivr-banner-left">
@@ -410,18 +407,18 @@
         </section>
 
         <!-- ================================================================
-             6. LIVE SECURITY TELEMETRY STREAM (Event Bus)
+             6. LIVE WIRE FEED
              ================================================================ -->
         <section class="section-card telemetry-stream-card" id="live-stream-section">
           <div class="section-header-bar">
             <div class="title-with-pill">
               <span class="pulse-indicator safe" id="stream-pulse-dot"></span>
-              <h3 class="section-title">Live Security Telemetry Stream</h3>
-              <span class="pill-badge font-mono">FIREWALL BUS</span>
+              <h3 class="section-title">Live security wire feed</h3>
+              <span class="pill-badge font-mono">Firewall bus</span>
             </div>
             <div class="stream-toolbar">
-              <span class="font-mono stream-status-text" id="stream-status-text">AWAITING AUDIT</span>
-              <button type="button" class="toolbar-btn" id="btn-replay-stream">Replay Stream</button>
+              <span class="font-mono stream-status-text" id="stream-status-text">Awaiting inspection</span>
+              <button type="button" class="toolbar-btn" id="btn-replay-stream">Replay</button>
             </div>
           </div>
           <div class="live-event-terminal" id="live-event-terminal">
@@ -431,13 +428,13 @@
 
 
         <!-- ================================================================
-             5. QUANTITATIVE TELEMETRY CARDS (Stats Grid)
+             5b. QUANTITATIVE STATS
              ================================================================ -->
         <div class="metrics-summary-grid" style="display: none;">
           <div class="metric-box">
             <div class="metric-top">
-              <span class="metric-title font-mono">DOM Elements</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <span class="metric-title font-mono">DOM elements</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                 <line x1="3" y1="9" x2="21" y2="9"></line>
                 <line x1="9" y1="21" x2="9" y2="9"></line>
@@ -449,8 +446,8 @@
 
           <div class="metric-box">
             <div class="metric-top">
-              <span class="metric-title font-mono">Network Calls</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <span class="metric-title font-mono">Network calls</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
               </svg>
             </div>
@@ -460,8 +457,8 @@
 
           <div class="metric-box alert-box">
             <div class="metric-top">
-              <span class="metric-title font-mono">Redirect Hops</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <span class="metric-title font-mono">Redirect hops</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <polyline points="17 1 21 5 17 9"></polyline>
                 <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
                 <polyline points="7 23 3 19 7 15"></polyline>
@@ -474,8 +471,8 @@
 
           <div class="metric-box">
             <div class="metric-top">
-              <span class="metric-title font-mono">Scripts Parsed</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <span class="metric-title font-mono">Scripts parsed</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
               </svg>
             </div>
@@ -485,8 +482,8 @@
 
           <div class="metric-box alert-box">
             <div class="metric-top">
-              <span class="metric-title font-mono">Threat Signatures</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <span class="metric-title font-mono">Threat signatures</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
               </svg>
             </div>
@@ -496,27 +493,24 @@
         </div>
 
         <!-- ================================================================
-             6. VISUAL X-RAY VIEWPORT (Interactive Browser Mockup)
+             7. VIEWPORT — VISUAL X-RAY
              ================================================================ -->
         <section class="section-card" id="wireframe-section" style="display: none;">
           <div class="section-header-bar">
             <div>
               <div class="title-with-pill">
-                <h3 class="section-title">Visual Viewport &amp; Deception X-Ray</h3>
-                <span class="pill-badge font-mono">INTERACTIVE</span>
+                <h3 class="section-title">Viewport &amp; deception overlay</h3>
+                <span class="pill-badge font-mono">Interactive</span>
               </div>
-              <p class="section-subtitle">Real-time simulation of the target webpage with computed bounding boxes and invisible click interception layers highlighted</p>
+              <p class="section-subtitle">A live render of the target page with computed bounding boxes and invisible click layers marked</p>
             </div>
 
             <div class="viewport-toolbar">
-             
-             
             </div>
           </div>
 
           <!-- Browser Frame -->
           <div class="browser-window-frame">
-            <!-- Window Title Bar -->
             <div class="browser-window-top">
               <div class="browser-window-buttons">
                 <span class="win-btn close"></span>
@@ -524,7 +518,7 @@
                 <span class="win-btn max"></span>
               </div>
               <div class="browser-address-container">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                   <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                   <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                 </svg>
@@ -537,7 +531,7 @@
 
             <!-- Browser Viewport Content -->
             <div class="browser-viewport-canvas" id="viewport-canvas">
-              <!-- Mode A: Benchmark Demo Document (populated by JS after analysis) -->
+              <!-- Mode A: Benchmark Demo Document -->
               <div class="simulated-document-card" id="sim-doc-card" style="display: none;">
               </div>
 
@@ -545,13 +539,12 @@
               <div class="live-website-viewport-card" id="live-web-card" style="display: none;">
                 <div class="live-web-header">
                   <div class="live-web-meta">
-                    <span class="live-target-badge font-mono" id="live-target-type-badge">Live Website Inspection</span>
+                    <span class="live-target-badge font-mono" id="live-target-type-badge">Live website inspection</span>
                     <span class="live-domain-title font-mono" id="live-target-domain-title">&mdash;</span>
                   </div>
-                  <span class="live-element-tally font-mono" id="live-target-element-tally">&mdash; Elements Mapped</span>
+                  <span class="live-element-tally font-mono" id="live-target-element-tally">&mdash; elements mapped</span>
                 </div>
 
-                <!-- Screenshot or Dynamic Target Surface -->
                 <div class="live-screen-container" id="live-screen-container">
                   <img id="live-page-screenshot" class="live-page-screenshot" src="" alt="Live Page Capture" style="display: none;" />
                   <div id="live-dom-surfaces" class="live-dom-surfaces"></div>
@@ -561,88 +554,85 @@
               <!-- Awaiting Analysis Placeholder -->
               <div class="viewport-awaiting-state" id="viewport-awaiting-state">
                 <div class="awaiting-icon">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.4">
+                  <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.45">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                     <polyline points="9 12 11 14 15 10"></polyline>
                   </svg>
                 </div>
-                <p class="awaiting-text font-mono">Run an audit to inspect the target interaction surface</p>
+                <p class="awaiting-text font-mono">Run an inspection to see the target's interaction surface</p>
               </div>
             </div>
 
-            <!-- Bottom Viewport Legend -->
             <div class="viewport-legend-bar font-mono">
-              
             </div>
           </div>
         </section>
 
         <!-- ================================================================
-             7. STRUCTURED FORENSIC WORKSPACE (Tabbed Console)
+             8. CASE FILE (tabbed console)
              ================================================================ -->
         <section class="section-card" id="forensic-section" style="display: none;">
-          <!-- Segmented Header Navigation -->
           <div class="forensics-nav-header" role="tablist">
             <button type="button" class="forensic-tab-btn active" data-tab="findings" role="tab" aria-selected="true">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
                 <line x1="12" y1="9" x2="12" y2="13"></line>
                 <line x1="12" y1="17" x2="12.01" y2="17"></line>
               </svg>
-              <span>Threat Findings</span>
+              <span>Findings</span>
               <span class="tab-badge-count font-mono" id="badge-count-findings">0</span>
             </button>
 
             <button type="button" class="forensic-tab-btn" data-tab="interactions" role="tab" aria-selected="false">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M15 3h6v6"></path>
                 <path d="M10 14L21 3"></path>
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
               </svg>
-              <span>Interaction Surface Matrix</span>
+              <span>Interaction matrix</span>
               <span class="tab-badge-count font-mono" id="badge-count-interactions">0</span>
             </button>
 
             <button type="button" class="forensic-tab-btn" data-tab="network" role="tab" aria-selected="false">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <circle cx="12" cy="12" r="10"></circle>
                 <line x1="2" y1="12" x2="22" y2="12"></line>
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
               </svg>
-              <span>Redirect Route Graph</span>
+              <span>Redirect graph</span>
               <span class="tab-badge-count font-mono" id="badge-count-redirects">0</span>
             </button>
 
             <button type="button" class="forensic-tab-btn" data-tab="javascript" role="tab" aria-selected="false">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
               </svg>
-              <span>JavaScript Runtime</span>
+              <span>JavaScript runtime</span>
             </button>
 
             <button type="button" class="forensic-tab-btn" data-tab="ai" role="tab" aria-selected="false">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <circle cx="12" cy="12" r="9"></circle>
                 <path d="M12 8v4l3 3"></path>
               </svg>
-              <span>AI Deception Audit</span>
+              <span>AI deception review</span>
             </button>
 
             <button type="button" class="forensic-tab-btn" data-tab="telemetry" role="tab" aria-selected="false">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <polyline points="4 17 10 11 4 5"></polyline>
                 <line x1="12" y1="19" x2="20" y2="19"></line>
               </svg>
-              <span>Raw Telemetry &amp; cURL</span>
+              <span>Raw telemetry &amp; cURL</span>
             </button>
           </div>
 
-          <!-- TAB 1: THREAT FINDINGS -->
+          <!-- TAB 1: FINDINGS -->
           <div class="forensic-pane active" id="tab-pane-findings" role="tabpanel">
             <div class="pane-action-bar">
-              <span class="pane-label font-mono">SEVERITY FILTER</span>
+              <span class="pane-label font-mono">Severity</span>
               <div class="filter-pills-row">
-                <button type="button" class="sev-filter-btn active font-mono" data-filter="all">All Findings</button>
+                <button type="button" class="sev-filter-btn active font-mono" data-filter="all">All findings</button>
                 <button type="button" class="sev-filter-btn font-mono" data-filter="critical">Critical</button>
                 <button type="button" class="sev-filter-btn font-mono" data-filter="high">High</button>
                 <button type="button" class="sev-filter-btn font-mono" data-filter="medium">Medium</button>
@@ -657,18 +647,18 @@
           <!-- TAB 2: INTERACTION MATRIX -->
           <div class="forensic-pane" id="tab-pane-interactions" role="tabpanel">
             <div class="pane-description-text">
-              Interactive DOM controls detected in the target page, analyzed for z-index stacking order, pointer event interception, and destination consistency.
+              Interactive DOM controls on the target page, checked for stacking order, pointer-event interception, and destination consistency.
             </div>
             <div class="data-table-wrap">
               <table class="enterprise-table" id="interaction-table">
                 <thead>
                   <tr>
-                    <th>DOM Element Selector</th>
-                    <th>Visible Label</th>
-                    <th>Control Type</th>
-                    <th>Resolved Destination</th>
-                    <th>Stacking &amp; Opacity</th>
-                    <th class="align-right">Risk Assessment</th>
+                    <th>DOM element selector</th>
+                    <th>Visible label</th>
+                    <th>Control type</th>
+                    <th>Resolved destination</th>
+                    <th>Stacking &amp; opacity</th>
+                    <th class="align-right">Risk</th>
                   </tr>
                 </thead>
                 <tbody id="interaction-table-body">
@@ -681,25 +671,25 @@
           <!-- TAB 3: REDIRECT ROUTE GRAPH -->
           <div class="forensic-pane" id="tab-pane-network" role="tabpanel">
             <div class="pane-description-text" id="network-section">
-              Sequential HTTP request hops, tracing outbound socket events, status codes, and cross-domain diversions.
+              Sequential HTTP hops, tracing outbound requests, status codes, and cross-domain diversions.
             </div>
             <div class="network-flow-stream" id="redirect-chain-container">
               <!-- Dynamically populated -->
             </div>
           </div>
 
-          <!-- TAB 4: JAVASCRIPT RUNTIME HOOKS -->
+          <!-- TAB 4: JAVASCRIPT RUNTIME -->
           <div class="forensic-pane" id="tab-pane-javascript" role="tabpanel">
             <div class="pane-description-text">
-              Monitored JavaScript execution hooks, event interception routines, and evasion scripts.
+              Monitored JavaScript execution hooks, interception routines, and evasion scripts.
             </div>
             <div class="data-table-wrap">
               <table class="enterprise-table">
                 <thead>
                   <tr>
-                    <th>Signal Function / Property</th>
-                    <th>Source Context</th>
-                    <th>Observed Behavior</th>
+                    <th>Signal function / property</th>
+                    <th>Source context</th>
+                    <th>Observed behavior</th>
                     <th class="align-right">Severity</th>
                   </tr>
                 </thead>
@@ -710,14 +700,14 @@
             </div>
           </div>
 
-          <!-- TAB 5: AI DECEPTION AUDIT -->
+          <!-- TAB 5: AI DECEPTION REVIEW -->
           <div class="forensic-pane" id="tab-pane-ai" role="tabpanel">
             <div class="ai-audit-card">
               <div class="ai-audit-head">
                 <div class="ai-model-identity">
                   <span class="ai-status-dot"></span>
                   <div>
-                    <h4 class="ai-header-title">Autonomous Agent Safety Evaluation</h4>
+                    <h4 class="ai-header-title">Autonomous agent safety review</h4>
                     <span class="ai-header-model font-mono" id="ai-model-name">&mdash;</span>
                   </div>
                 </div>
@@ -726,12 +716,12 @@
 
               <div class="ai-audit-sections">
                 <div class="ai-section-block">
-                  <span class="ai-block-title font-mono">Deceptive Interface Mechanics</span>
+                  <span class="ai-block-title font-mono">Deceptive interface mechanics</span>
                   <p class="ai-block-text" id="ai-deception-text">&mdash;</p>
                 </div>
 
                 <div class="ai-section-block">
-                  <span class="ai-block-title font-mono">Enforced Agent Mitigation Strategy</span>
+                  <span class="ai-block-title font-mono">Recommended mitigation</span>
                   <div class="ai-code-recommendation font-mono" id="ai-advice-box">&mdash;</div>
                 </div>
               </div>
@@ -742,8 +732,8 @@
           <div class="forensic-pane" id="tab-pane-telemetry" role="tabpanel">
             <div class="telemetry-actions-bar">
               <div>
-                <span class="pane-label font-mono">STRUCTURED TELEMETRY PAYLOAD</span>
-                <p class="pane-subtext">Cryptographic policy verification payload for automated SIEM pipelines</p>
+                <span class="pane-label font-mono">Structured telemetry payload</span>
+                <p class="pane-subtext">Verification payload for downstream SIEM pipelines</p>
               </div>
               <div class="telemetry-btn-row">
                 <button type="button" class="btn-micro-action font-mono" id="copy-curl-btn">Copy cURL</button>
@@ -767,21 +757,21 @@
     <div class="modal-overlay" id="settings-modal" style="display: none;">
       <div class="modal-card">
         <div class="modal-header">
-          <h3 class="modal-title">Backend Configuration</h3>
+          <h3 class="modal-title">Backend configuration</h3>
           <button type="button" class="modal-close-btn" id="close-settings-modal">&times;</button>
         </div>
         <div class="modal-body">
           <div class="setting-group">
-            <label class="setting-label font-mono" for="setting-api-url">API Endpoint</label>
+            <label class="setting-label font-mono" for="setting-api-url">API endpoint</label>
             <input type="text" id="setting-api-url" class="setting-input font-mono" value="http://localhost:8000" placeholder="http://localhost:8000" />
           </div>
           <div class="setting-group">
-            <label class="setting-label font-mono" for="setting-groq-key">Groq API Key <span class="setting-optional">(optional)</span></label>
+            <label class="setting-label font-mono" for="setting-groq-key">Groq API key <span class="setting-optional">(optional)</span></label>
             <input type="password" id="setting-groq-key" class="setting-input font-mono" value="" placeholder="gsk_..." />
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn-modal-save" id="save-settings-btn">Save Configuration</button>
+          <button type="button" class="btn-modal-save" id="save-settings-btn">Save configuration</button>
         </div>
       </div>
     </div>
@@ -792,7 +782,7 @@
     <div class="modal-overlay" id="forensic-modal" style="display: none;">
       <div class="modal-card modal-large">
         <div class="modal-header">
-          <h3 class="modal-title" id="forensic-modal-title">Forensic Detail</h3>
+          <h3 class="modal-title" id="forensic-modal-title">Exhibit detail</h3>
           <button type="button" class="modal-close-btn" id="close-forensic-modal">&times;</button>
         </div>
         <div class="modal-body">
