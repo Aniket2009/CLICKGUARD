@@ -1041,6 +1041,15 @@ function renderAiInsights(ai) {
 
   if (modelName) modelName.textContent = ai.model_used || 'Unknown Model';
 
+  // If the backend caught an error and returned a fallback payload (like "groq-unavailable")
+  if (ai.model_used === 'groq-unavailable' || ai.error) {
+    if (verdictBadge) { verdictBadge.textContent = 'N/A'; verdictBadge.className = 'ai-verdict-tag font-mono'; }
+    // Use the dynamic executive summary sent from the backend instead of the hardcoded string
+    if (deceptionText) deceptionText.textContent = ai.executive_summary || 'AI reasoning was unavailable for this audit.';
+    if (adviceBox) adviceBox.textContent = '—';
+    return;
+  }
+
   const aiVerdict = (ai.ai_verdict || '').toUpperCase();
   const isDanger = aiVerdict === 'BLOCK';
   const isWarning = aiVerdict === 'CAUTION';
